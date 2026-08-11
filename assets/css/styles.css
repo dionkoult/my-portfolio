@@ -1046,10 +1046,6 @@ img {
   transition: transform .4s, color .4s;
 }
 
-.contact__address:hover {
-  color: var(--text-color);
-}
-
 .contact__links {
   display: grid;
   grid-template-columns: max-content;
