@@ -4,13 +4,25 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!--=============== FAVICON ===============-->
-      <link rel="icon" type="image/png" href="assets/img/favicon-96x96.png" sizes="96x96" />
-      <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-      <link rel="shortcut icon" href="assets/img/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
-      <meta name="apple-mobile-web-app-title" content="MyPortfolio" />
-      <link rel="manifest" href="assets/img/site.webmanifest" />
+      <!--=============== FAVICON & FEATURED ===============-->
+      <link rel="icon" type="image/png" href="/assets/img/favicon.svg" />
+
+      <!-- Open Graph (Teams, LinkedIn, Facebook, Discord, etc.) -->
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="My Portfolio" />
+      <meta property="og:description" content="" />
+      <meta property="og:url" content="https://dionkoult.github.io/my-portfolio/" />
+      <meta property="og:image" content="https://dionkoult.github.io/my-portfolio/featured.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
+
+      <!-- Twitter/X -->
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="My Portfolio" />
+      <meta name="twitter:description" content="" />
+      <meta name="twitter:image" content="https://dionkoult.github.io/my-portfolio/featured.png" />
+      
 
       <!--=============== REMIXICONS ===============-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
@@ -21,16 +33,10 @@
       <!--=============== CSS ===============-->
       <link rel="stylesheet" href="assets/css/styles.css">
 
-      <title>Dionusis Georgantopoulos</title>
+      <title>Dionysis Georgantopoulos</title>
 
       <link rel="preload" href="assets/img/cursor_main.png" as="image">
       <link rel="preload" href="assets/img/cursor_hover.png" as="image">
-
-      <meta property="og:title" content="My Portfolio">
-      <meta property="og:description" content="A Summary of me.">
-      <meta property="og:image" content="assets/img/featured.png">
-      <meta property="og:url" content="https://dionkoult.github.io/my-portfolio/">
-      <meta property="og:type" content="website">
 
       <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
    </head>
@@ -111,7 +117,7 @@
             <div class="home__container container grid">
                <div class="home__data">
                   <h3 class="home__greeting">Hello, I'm</h3>
-                  <h1 class="home__name">Dionusis</h1>
+                  <h1 class="home__name">Dionysis</h1>
                </div>
 
                <div class="home__image">
@@ -127,7 +133,7 @@
                </div>
 
                <div class="home__social">
-                  <a href="https://www.linkedin.com/in/dionusis-georgantopoulos-103305316/" target="_blank" class="home__social-link">
+                  <a href="https://www.linkedin.com/in/dionysis-georgantopoulos-103305316/" target="_blank" class="home__social-link">
                      <i class="ri-linkedin-box-line"></i>
                      <div class="social__tooltip">
                         LinkedIn
@@ -140,23 +146,9 @@
                         GitHub
                      </div>
                   </a>
-
-                  <a href="https://dribbble.com/" target="_blank" class="home__social-link">
-                     <i class="ri-dribbble-line"></i>
-                     <div class="social__tooltip">
-                        Dribbble
-                     </div>
-                  </a>
-
-                  <a href="https://about.gitlab.com/" target="_blank" class="home__social-link">
-                     <i class="ri-gitlab-line"></i>
-                     <div class="social__tooltip">
-                        GitLab
-                     </div>
-                  </a>
                </div>
 
-               <a href="assets/pdf/Anid-Cv.pdf" download target="_blank" class="home__cv">
+               <a href="assets/pdf/Dionysis_Georgantopoulos_CV.pdf" download target="_blank" class="home__cv">
                   RESUME <i class="ri-file-list-2-line"></i>
                </a>
             </div>
@@ -180,7 +172,7 @@
                      explore and learn new development and design skills.
                   </p>
 
-                  <a href="assets/pdf/Anid-Cv.pdf" download target="_blank" class="button">
+                  <a href="assets/pdf/Dionysis_Georgantopoulos_CV.pdf" download target="_blank" class="button">
                      Download CV <i class="ri-file-list-2-line"></i>
                   </a>
                </div>
@@ -522,6 +514,28 @@
                            </a>
                         </div>
                      </article>
+
+                     <article class="projects__card swiper-slide">
+                        <div class="blob"></div>
+
+                        <div class="projects__number">
+                           <h1>06</h1>
+                           <h3>Web</h3>
+                        </div>
+
+                        <div class="projects__data">
+                           <h1 class="projects__title">Fast Food <br> Website</h1>
+                           <p class="projects__subtitle">Technologies used</p>
+                           <p class="projects__description">HTML, CSS, JavaScript, Gsap, Swiper Js and Figma.</p>
+                        </div>
+
+                        <div class="projects__image">
+                           <img src="assets/img/projects-5.png" alt="image" class="projects__img">
+                           <a href="#" target="_blank" class="projects__button">
+                              <i class="ri-arrow-right-up-long-line"></i>
+                           </a>
+                        </div>
+                     </article>
                   </div>
 
                   <div class="swiper-pagination"></div>
@@ -702,7 +716,9 @@
                   <div class="contact__info grid">
                      <div>
                         <h3 class="contact__title">Email</h3>
-                        <address class="contact__address">dionusisgeorgantopoulos@gmail.com</address>
+                        <address class="contact__address"> 
+                           dionusisgeorgantopoulos@gmail.com 
+                        </address>
                      </div>
 
                      <div>
@@ -715,49 +731,29 @@
                      <h3 class="contact__title">Social Media</h3>
 
                      <div class="contact__links">
-                        <a href="" target="_blank" class="contact__link">
+                        <a href="https://www.linkedin.com/in/dionysis-georgantopoulos-103305316/" target="_blank" class="contact__link">
                            LinkedIn
                            <i class="ri-arrow-right-up-long-line"></i>
                         </a>
 
-                        <a href="" target="_blank" class="contact__link">
-                           GitHub
+                        <a href="https://www.facebook.com/dionusis.georgantopoulos/" target="_blank" class="contact__link">
+                           Facebook
                            <i class="ri-arrow-right-up-long-line"></i>
                         </a>
 
-                        <a href="" target="_blank" class="contact__link">
-                           Dribbble
-                           <i class="ri-arrow-right-up-long-line"></i>
-                        </a>
-
-                        <a href="" target="_blank" class="contact__link">
-                           GitLab
+                        <a href="https://www.instagram.com/dion_koult/" target="_blank" class="contact__link">
+                           Instagram
                            <i class="ri-arrow-right-up-long-line"></i>
                         </a>
                      </div>
                   </div>
 
                   <div class="contact__write">
-                     <h3 class="contact__title">Write Me & We'll Talk</h3>
+                     <h3 class="contact__title">About the Code</h3>
 
                      <div class="contact__links">
-                        <a href="" target="_blank" class="contact__link">
-                           WhatsApp
-                           <i class="ri-arrow-right-up-long-line"></i>
-                        </a>
-
-                        <a href="" target="_blank" class="contact__link">
-                           Messenger
-                           <i class="ri-arrow-right-up-long-line"></i>
-                        </a>
-
-                        <a href="" target="_blank" class="contact__link">
-                           Telegram
-                           <i class="ri-arrow-right-up-long-line"></i>
-                        </a>
-
-                        <a href="" target="_blank" class="contact__link">
-                           Instagram
+                        <a href="https://github.com/dionkoult" target="_blank" class="contact__link">
+                           GitHub
                            <i class="ri-arrow-right-up-long-line"></i>
                         </a>
                      </div>

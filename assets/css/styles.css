@@ -1043,6 +1043,11 @@ img {
   font-style: normal;
   font-weight: var(--font-medium);
   text-align: center;
+  transition: transform .4s, color .4s;
+}
+
+.contact__address:hover {
+  color: var(--text-color);
 }
 
 .contact__links {
