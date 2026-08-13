@@ -1477,6 +1477,7 @@ img {
 
   .work__subtitle, .work__description {
     font-size: var(--h3-font-size);
+    margin-top: 5px;
   }
 
   .services__container {
