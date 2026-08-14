@@ -361,13 +361,6 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
     }, 1000);
 
   }, 900);
-
-  // Restore scroll restoration behavior after scroll-to-top
-  setTimeout(() => {
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'auto';
-    }
-  }, 500);
 }
 
 /*=============== SKIP TO TOP BUTTON ===============*/
