@@ -502,17 +502,44 @@ img {
 
 .about__image .blob-animate:nth-child(1) {
   top: 1.5rem;
-  left: 1rem;
+  left: 1.5rem !important;
 }
 
 .about__image .blob-animate:nth-child(2) {
-  right: -.5rem;
+  right: 2rem !important;
   bottom: .5rem;
 }
 
-.about__perfil {
-  width: 220px;
+.code-cont {
+  height: 600px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.code {
+  height: 380px;
+  width: 500px;
+  background-color: rgba(14, 14, 17, 0.8);
+  border-radius: 3rem;
+  padding: 2rem;
+  white-space: pre;
+  font-family: 'Fira Code', Consolas, monospace;
+  line-height: 1.3;
+  color: #D4D4D4;
+}
+
+.comment {color: #6A9955}
+.blue {color: #3183c7}
+.light-yellow {color: #DCDCAA}
+.purple {color: #C586C0}
+.tense-yellow {color: #d3d327}
+.light-blue {color: #9CDCFE}
+.string {color: #CE9178}
+.tense-blue{color: #4eafff}
+.gray {color: gray}
+.t2-blue {color: #1b98ff}
 
 .about__shadow {
   width: 100%;
