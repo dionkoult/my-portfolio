@@ -1,3 +1,13 @@
+/*=============== FORCE SCROLL TOP BEFORE ANYTHING ELSE ===============*/
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+window.addEventListener('pageshow', () => {
+  window.scrollTo(0, 0);
+});
+
 /*=============== HOME SPLIT TEXT ===============*/
   const { animate, splitText, stagger } = anime;
 
@@ -305,8 +315,8 @@ sr.reveal(`.home__info`, { delay: 1200, origin: 'bottom', distance: '60px' });
 sr.reveal(`.home__social, .home__cv`, { delay: 1500 });
 
 // Reveal about section elements
-sr.reveal(`.about__data`, { origin: 'left', distance: '60px' });
-sr.reveal(`.about__image`, { origin: 'right', distance: '60px' });
+sr.reveal(`.about__data`, { origin: 'left', distance: '60px', threshold: 0.5 });
+sr.reveal(`.about__image`, { origin: 'right', distance: '60px', threshold: 0.5 });
 
 // Reveal service cards one by one
 sr.reveal(`.services__card`, { interval: 100, distance: '60px' });
@@ -319,16 +329,6 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
 
   // Disable scrolling
   document.body.style.overflow = "hidden";
-
-  // Disable automatic scroll restoration
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  // Force scroll to top after minimal delay
-  setTimeout(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, 50);
 
   const container = document.getElementById("reload-container");
   const logo = document.getElementById("logo-image");

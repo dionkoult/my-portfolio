@@ -60,7 +60,7 @@ const html = `<span class="comment">// UserCard.jsx</span>
     if (i <= chars) {
       el.innerHTML = getVisibleHTML(i);
       i++;
-      setTimeout(typeLetter, 50);
+      setTimeout(typeLetter, 30);
     } else {
       typing = false;
     }
@@ -74,7 +74,7 @@ const html = `<span class="comment">// UserCard.jsx</span>
         observer.disconnect();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.5 });
 
   observer.observe(el);
 });
