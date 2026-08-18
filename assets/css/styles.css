@@ -334,11 +334,11 @@ img {
 }
 
 .home__image .blob-animate {
-  width: 100px;
-  height: 100px;
-  bottom: 5rem;
+  width: 180px;
+  height: 180px;
+  bottom: 3rem;
   justify-self: center;
-  opacity: 0.9;
+  opacity: 0.6;
   
 }
 
