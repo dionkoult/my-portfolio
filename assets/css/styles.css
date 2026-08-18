@@ -518,7 +518,7 @@ img {
 }
 
 .code {
-  height: 360px;
+  height: 340px;
   background-color: rgba(14, 14, 17, 0.8);
   border-radius: 3rem;
   padding: 2rem 1rem;
@@ -526,7 +526,7 @@ img {
   font-family: 'Fira Code', Consolas, monospace;
   line-height: 1.5;
   color: #D4D4D4;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .comment {color: #6A9955}
@@ -1402,6 +1402,8 @@ img {
     font-size: var(--normal-font-size);
     rotate: 0deg;
     right: 0;
+    top: auto;
+    bottom: 3rem;
   }
 
   .about__container {
@@ -1419,6 +1421,7 @@ img {
 
   .about__description {
     margin-bottom: 3rem;
+    font-size: var(--h3-font-size);
   }
   .about__image {
     order: -1;
