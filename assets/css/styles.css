@@ -486,7 +486,7 @@ img {
 }
 
 .about__description {
-  font-size: var(--h2-font-size);
+  font-size: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -521,7 +521,7 @@ img {
   height: 360px;
   background-color: rgba(14, 14, 17, 0.8);
   border-radius: 3rem;
-  padding: 2rem;
+  padding: 2rem 1rem;
   white-space: pre;
   font-family: 'Fira Code', Consolas, monospace;
   line-height: 1.5;
@@ -1172,7 +1172,7 @@ img {
 
 @media (max-width: 550px) {
   .about__container {
-    grid-template-columns: 400px;
+    grid-template-columns: 370px;
     justify-content: center;
   }
 }
