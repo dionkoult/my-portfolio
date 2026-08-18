@@ -1,31 +1,14 @@
-/*=============== FORCE SCROLL TOP ===============*/
+/*=============== FORCE SCROLL TOP BEFORE RELOAD ANIMATION ===============*/
 
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
 const forceScrollTop = () => {
-  window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
+  window.scrollTo(0, 0);
 };
-
-forceScrollTop();
-
-window.addEventListener('pageshow', () => {
-  forceScrollTop();
-
-  requestAnimationFrame(() => {
-    forceScrollTop();
-
-    requestAnimationFrame(() => {
-      forceScrollTop();
-    });
-  });
-
-  setTimeout(forceScrollTop, 100);
-  setTimeout(forceScrollTop, 500);
-});
 
 /*=============== HOME SPLIT TEXT ===============*/
   const { animate, splitText, stagger } = anime;
@@ -347,7 +330,10 @@ const navEntries = performance.getEntriesByType("navigation");
 if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].type === "navigate")) {
 
   // Disable scrolling
+  document.documentElement.style.overflow = "hidden";
   document.body.style.overflow = "hidden";
+
+  forceScrollTop();
 
   const container = document.getElementById("reload-container");
   const logo = document.getElementById("logo-image");
@@ -372,18 +358,11 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
     }, 450);
 
     setTimeout(() => {
-      forceScrollTop();
-
       container.style.display = "none";
 
       // Re-enable scrolling
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
-
-      requestAnimationFrame(() => {
-        forceScrollTop();
-      });
-
-      setTimeout(forceScrollTop, 100);
     }, 1000);
 
   }, 900);
