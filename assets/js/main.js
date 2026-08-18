@@ -2,36 +2,10 @@
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
+window.scrollTo(0, 0);
 
-// Stop mobile browsers from "helpfully" re-adjusting scroll when layout shifts
-document.documentElement.style.overflowAnchor = 'none';
-
-function forceScrollTop() {
+window.addEventListener('pageshow', () => {
   window.scrollTo(0, 0);
-}
-
-// Fire immediately
-forceScrollTop();
-
-// Fire again once the DOM is parsed
-document.addEventListener('DOMContentLoaded', forceScrollTop);
-
-// Fire again once everything (fonts, images, swiper) has finished loading and reflowed
-window.addEventListener('load', () => {
-  forceScrollTop();
-  // one more pass a tick later, after any late reflow (webfonts, ScrollReveal, etc.)
-  requestAnimationFrame(forceScrollTop);
-  setTimeout(forceScrollTop, 300);
-});
-
-// Covers back/forward cache restores on mobile Safari, which often race the above
-window.addEventListener('pageshow', (event) => {
-  forceScrollTop();
-  if (event.persisted) {
-    // bfcache restore — iOS Safari sometimes re-applies old scroll AFTER this fires,
-    // so double check a moment later
-    setTimeout(forceScrollTop, 50);
-  }
 });
 
 /*=============== HOME SPLIT TEXT ===============*/
@@ -383,8 +357,6 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
 
       // Re-enable scrolling
       document.body.style.overflow = "";
-
-      window.scrollTo(0, 0);
 
     }, 1000);
 
