@@ -339,7 +339,6 @@ img {
   bottom: 1.5rem;
   justify-self: center;
   opacity: 0.6;
-  
 }
 
 .home__perfil {
@@ -423,7 +422,7 @@ img {
 .home__cv {
   z-index: 2;
   right: -2.5rem;
-  bottom: 2.5rem;
+  top: 12rem;
   rotate: -90deg;
   color: var(--text-color-light);
   font: var(--font-medium) var(--small-font-size) var(--second-font);
