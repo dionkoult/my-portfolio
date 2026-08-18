@@ -488,6 +488,7 @@ img {
 .about__description {
   font-size: var(--h2-font-size);
   margin-bottom: 2rem;
+  width: 450px;
 }
 
 .about__description b{
