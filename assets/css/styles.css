@@ -334,10 +334,11 @@ img {
 }
 
 .home__image .blob-animate {
-  width: 250px;
-  height: 250px;
-  bottom: 0;
+  width: 100px;
+  height: 100px;
+  bottom: 5rem;
   justify-self: center;
+  opacity: 0.9;
   
 }
 
@@ -1157,8 +1158,8 @@ img {
 
   .blob,
   .home__image .blob-animate {
-    width: 220px;
-    height: 220px;
+    width: 90px;
+    height: 90px;
   }
 
   .projects__card {
@@ -1348,10 +1349,11 @@ img {
   }
 
   .home__image .blob-animate {
-    width: 450px;
-    height: 450px;
-    bottom: 2rem;
+    width: 250px;
+    height: 250px;
+    bottom: 8.5rem;
     filter: blur(50px);
+    opacity: 0.6;
   }
 
   .home__shadow {
