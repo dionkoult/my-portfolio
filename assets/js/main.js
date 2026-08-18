@@ -1,11 +1,30 @@
-/*=============== FORCE SCROLL TOP BEFORE ANYTHING ELSE ===============*/
+/*=============== FORCE SCROLL TOP ===============*/
+
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-window.scrollTo(0, 0);
+
+const forceScrollTop = () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+};
+
+forceScrollTop();
 
 window.addEventListener('pageshow', () => {
-  window.scrollTo(0, 0);
+  forceScrollTop();
+
+  requestAnimationFrame(() => {
+    forceScrollTop();
+
+    requestAnimationFrame(() => {
+      forceScrollTop();
+    });
+  });
+
+  setTimeout(forceScrollTop, 100);
+  setTimeout(forceScrollTop, 500);
 });
 
 /*=============== HOME SPLIT TEXT ===============*/
@@ -353,11 +372,18 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
     }, 450);
 
     setTimeout(() => {
+      forceScrollTop();
+
       container.style.display = "none";
 
       // Re-enable scrolling
       document.body.style.overflow = "";
 
+      requestAnimationFrame(() => {
+        forceScrollTop();
+      });
+
+      setTimeout(forceScrollTop, 100);
     }, 1000);
 
   }, 900);
