@@ -334,9 +334,9 @@ img {
 }
 
 .home__image .blob-animate {
-  width: 180px;
-  height: 180px;
-  bottom: 3rem;
+  width: 170px;
+  height: 170px;
+  bottom: 1.5rem;
   justify-self: center;
   opacity: 0.6;
   
