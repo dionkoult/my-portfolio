@@ -1,13 +1,3 @@
-/*=============== FORCE SCROLL TOP BEFORE ANYTHING ELSE ===============*/
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-window.scrollTo(0, 0);
-
-window.addEventListener('pageshow', () => {
-  window.scrollTo(0, 0);
-});
-
 /*=============== HOME SPLIT TEXT ===============*/
   const { animate, splitText, stagger } = anime;
 
@@ -327,8 +317,16 @@ const navEntries = performance.getEntriesByType("navigation");
 
 if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].type === "navigate")) {
 
-  // Disable scrolling
-  document.body.style.overflow = "hidden";
+  // Block scrolling without hiding the scrollbar
+  const preventScrollKeys = (e) => {
+    const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+    if (keys.includes(e.key)) e.preventDefault();
+  };
+  const preventScroll = (e) => e.preventDefault();
+
+  window.addEventListener("wheel", preventScroll, { passive: false });
+  window.addEventListener("touchmove", preventScroll, { passive: false });
+  window.addEventListener("keydown", preventScrollKeys, { passive: false });
 
   const container = document.getElementById("reload-container");
   const logo = document.getElementById("logo-image");
@@ -356,7 +354,9 @@ if (navEntries.length > 0 && (navEntries[0].type === "reload" || navEntries[0].t
       container.style.display = "none";
 
       // Re-enable scrolling
-      document.body.style.overflow = "";
+      window.removeEventListener("wheel", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+      window.removeEventListener("keydown", preventScrollKeys);
 
     }, 1000);
 
