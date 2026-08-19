@@ -1,3 +1,23 @@
+/*=============== FORCE SCROLL TO TOP ON RELOAD ===============*/
+
+// Stop the browser from restoring old scroll position
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// Strip the hash (#projects etc.) so the browser doesn't auto-jump to that section
+if (window.location.hash) {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+
+// Force scroll to top immediately
+window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+// Safety net: some mobile browsers apply the anchor jump slightly after load
+window.addEventListener('load', () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+});
+
 /*=============== HOME SPLIT TEXT ===============*/
   const { animate, splitText, stagger } = anime;
 
@@ -310,7 +330,6 @@ sr.reveal(`.about__image`, { origin: 'right', distance: '60px', threshold: 0.5 }
 
 // Reveal service cards one by one
 sr.reveal(`.services__card`, { interval: 100, distance: '60px' });
-
 
 /*=============== RELOAD ANIMATION ===============*/
 const navEntries = performance.getEntriesByType("navigation");
