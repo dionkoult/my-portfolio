@@ -663,6 +663,53 @@ img {
   transition: opacity .4s;
 }
 
+.projects__tech-wrap {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.projects__subtitle {
+  position: relative;
+  grid-row: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.projects__description:not(.info) {
+  grid-row: 2;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* info sits absolutely on top of subtitle's spot, out of grid flow */
+.projects__description.info {
+  position: absolute;
+  top: 4.75rem;
+  left: 0;
+  width: 100%;
+  grid-row: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* visible by default */
+.projects__subtitle,
+.projects__description:not(.info) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* on hover of the whole card: subtitle -> info swap, description fades out */
+.projects__card:hover .projects__subtitle,
+.projects__card:hover .projects__description:not(.info) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.projects__card:hover .projects__description.info {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*=============== WORK ===============*/
 .work__tabs {
   background-color: var(--container-color);

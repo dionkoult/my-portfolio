@@ -62,6 +62,7 @@ const swiperProjects = new Swiper('.projects__swiper', {
   autoplay: {
     delay: 3000,
     disableOnInteraction: false,
+    pauseOnMouseEnter: true,
   }
 });
 
