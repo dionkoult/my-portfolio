@@ -710,6 +710,11 @@ img {
   visibility: visible;
 }
 
+.projects__subtitle,
+.projects__description {
+  will-change: opacity;
+}
+
 /*=============== WORK ===============*/
 .work__tabs {
   background-color: var(--container-color);
