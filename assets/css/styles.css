@@ -674,11 +674,6 @@ img {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.projects__description:not(.info) {
-  grid-row: 2;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
 /* info sits absolutely on top of subtitle's spot, out of grid flow */
 .projects__description.info {
   position: absolute;
@@ -710,9 +705,11 @@ img {
   visibility: visible;
 }
 
-.projects__subtitle,
-.projects__description {
-  will-change: opacity;
+.projects__description:not(.info) {
+  grid-row: 2;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /*=============== WORK ===============*/
