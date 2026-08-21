@@ -47,9 +47,9 @@ window.addEventListener('load', () => {
   });
 
 /*=============== SWIPER PROJECTS ===============*/
-const cardHandlers = new Map();
+function setupCardTimers(card) {
+  if (card._showSequence) return card._showSequence; // avoid re-attaching if already set up
 
-document.querySelectorAll('.projects__card').forEach((card) => {
   let showTimeout, revertTimeout;
 
   function startShowSequence() {
@@ -71,12 +71,14 @@ document.querySelectorAll('.projects__card').forEach((card) => {
     card.classList.remove('show-info');
   }
 
-  // Desktop (mouse)
   card.addEventListener('mouseenter', startShowSequence);
   card.addEventListener('mouseleave', cancelAndRevert);
 
-  cardHandlers.set(card, { startShowSequence, cancelAndRevert });
-});
+  card._showSequence = { startShowSequence, cancelAndRevert };
+  return card._showSequence;
+}
+
+document.querySelectorAll('.projects__card').forEach(setupCardTimers);
 
 const swiperProjects = new Swiper('.projects__swiper', {
   loop: true,
@@ -98,18 +100,16 @@ const swiperProjects = new Swiper('.projects__swiper', {
 
   on: {
     tap: function (event) {
-      // toggle autoplay
       if (this.autoplay.running) {
         this.autoplay.stop();
       } else {
         this.autoplay.start();
       }
 
-      // handle card info reveal (mobile tap)
       const tappedCard = event.target.closest('.projects__card');
 
       document.querySelectorAll('.projects__card').forEach((card) => {
-        const handlers = cardHandlers.get(card);
+        const handlers = setupCardTimers(card); // works for clones too — attaches on first use
         if (card === tappedCard) {
           handlers.startShowSequence();
         } else {
