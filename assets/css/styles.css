@@ -682,6 +682,27 @@ img {
   gap: .5rem;
 }
 
+.projects__details > div:last-child {
+  position: relative;
+  flex: 1;
+}
+
+.project__details__button {
+  background-color: var(--container-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  padding: 4px 10px;
+  border-radius: 4rem;
+  font-size: var(--smaller-font-size);
+  font-family: var(--second-font);
+  transition: color 0.4s, border-color 0.4s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.project__details__button:not(.active):hover {
+  box-shadow: 0 4px 8px color-mix(in srgb, var(--text-color) 25%, transparent);
+}
+
 .techs__button.active,
 .info__button.active {
   color: var(--first-color);
@@ -689,34 +710,18 @@ img {
 }
 
 .projects__description {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.2s ease;
 }
 
 .projects__description.active {
-  display: block;
   opacity: 1;
-}
-
-/* new: fading-out state, still displayed but transitioning to opacity 0 */
-.projects__description.fade-out {
-  display: block;
-  opacity: 0;
-}
-
-/* controls display only */
-.projects__description.show {
-  display: block;
-}
-
-/* controls opacity only, requires .show to actually be visible */
-.projects__description.show.active {
-  opacity: 1;
-}
-
-.project__details__button:not(.active):hover {
-  box-shadow: 0 4px 8px color-mix(in srgb, var(--text-color) 25%, transparent);
+  pointer-events: auto;
 }
 
 /*=============== WORK ===============*/

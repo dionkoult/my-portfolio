@@ -410,35 +410,19 @@ document.querySelectorAll('.projects__card').forEach((card) => {
   const infoText = card.querySelector('.projects__description.info');
 
   // Set initial state
-  techsText.classList.add('show', 'active');
-  infoText.classList.remove('show', 'active');
-
+  techsText.classList.add('active');
+  infoText.classList.remove('active');
   techsBtn.classList.add('active');
   infoBtn.classList.remove('active');
 
   function switchTo(showEl, showBtn, hideEl, hideBtn) {
     if (showEl.classList.contains('active')) return;
 
-    // Button state
     hideBtn.classList.remove('active');
     showBtn.classList.add('active');
 
-    // Fade current element out
     hideEl.classList.remove('active');
-
-    setTimeout(() => {
-      // Hide old element
-      hideEl.classList.remove('show');
-
-      // Prepare new element
-      showEl.classList.add('show');
-
-      // Force browser to register opacity: 0
-      void showEl.offsetWidth;
-
-      // Fade new element in
-      showEl.classList.add('active');
-    }, 200);
+    showEl.classList.add('active');
   }
 
   techsBtn.addEventListener('click', () => {
