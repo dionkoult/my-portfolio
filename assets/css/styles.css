@@ -1358,13 +1358,6 @@ img {
   }
 }
 
-@media (max-width: 1149px) {
-  .projects__description.info {
-    top: 4.1rem;
-  }
-}
-
-
 /* For large devices */
 @media screen and (min-width: 1150px) {
   #logo-image {
