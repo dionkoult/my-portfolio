@@ -47,39 +47,6 @@ window.addEventListener('load', () => {
   });
 
 /*=============== SWIPER PROJECTS ===============*/
-function setupCardTimers(card) {
-  if (card._showSequence) return card._showSequence; // avoid re-attaching if already set up
-
-  let showTimeout, revertTimeout;
-
-  function startShowSequence() {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
-
-    showTimeout = setTimeout(() => {
-      card.classList.add('show-info');
-
-      revertTimeout = setTimeout(() => {
-        card.classList.remove('show-info');
-      }, 6500);
-    }, 500);
-  }
-
-  function cancelAndRevert() {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
-    card.classList.remove('show-info');
-  }
-
-  card.addEventListener('mouseenter', startShowSequence);
-  card.addEventListener('mouseleave', cancelAndRevert);
-
-  card._showSequence = { startShowSequence, cancelAndRevert };
-  return card._showSequence;
-}
-
-document.querySelectorAll('.projects__card').forEach(setupCardTimers);
-
 const swiperProjects = new Swiper('.projects__swiper', {
   loop: true,
   spaceBetween: 24,
@@ -96,27 +63,6 @@ const swiperProjects = new Swiper('.projects__swiper', {
     delay: 3000,
     disableOnInteraction: false,
     pauseOnMouseEnter: true,
-  },
-
-  on: {
-    tap: function (event) {
-      if (this.autoplay.running) {
-        this.autoplay.stop();
-      } else {
-        this.autoplay.start();
-      }
-
-      const tappedCard = event.target.closest('.projects__card');
-
-      document.querySelectorAll('.projects__card').forEach((card) => {
-        const handlers = setupCardTimers(card); // works for clones too — attaches on first use
-        if (card === tappedCard) {
-          handlers.startShowSequence();
-        } else {
-          handlers.cancelAndRevert();
-        }
-      });
-    }
   }
 });
 
@@ -453,5 +399,31 @@ document.querySelector('.top__button').addEventListener('click', function () {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
+  });
+});
+
+/* ============ Info toggle ============ */
+document.querySelectorAll('.projects__card').forEach((card) => {
+  let showTimeout, revertTimeout;
+
+  card.addEventListener('mouseenter', () => {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+
+    // show info after 0.1s hover
+    showTimeout = setTimeout(() => {
+      card.classList.add('show-info');
+
+      // revert back to original after 5s of being shown
+      revertTimeout = setTimeout(() => {
+        card.classList.remove('show-info');
+      }, 6500);
+    }, 500);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+    card.classList.remove('show-info');
   });
 });
