@@ -406,24 +406,39 @@ document.querySelector('.top__button').addEventListener('click', function () {
 document.querySelectorAll('.projects__card').forEach((card) => {
   let showTimeout, revertTimeout;
 
-  card.addEventListener('mouseenter', () => {
+  function startShowSequence() {
     clearTimeout(showTimeout);
     clearTimeout(revertTimeout);
 
-    // show info after 0.5s hover
     showTimeout = setTimeout(() => {
       card.classList.add('show-info');
 
-      // revert back to original after 5s of being shown
       revertTimeout = setTimeout(() => {
         card.classList.remove('show-info');
       }, 6500);
     }, 500);
-  });
+  }
 
-  card.addEventListener('mouseleave', () => {
+  function cancelAndRevert() {
     clearTimeout(showTimeout);
     clearTimeout(revertTimeout);
+    card.classList.remove('show-info');
+  }
+
+  // Desktop (mouse)
+  card.addEventListener('mouseenter', startShowSequence);
+  card.addEventListener('mouseleave', cancelAndRevert);
+
+  // Mobile (touch) — tap to trigger, tap elsewhere to cancel
+  card.addEventListener('touchstart', (e) => {
+    e.stopPropagation(); // prevent the document listener below from firing on this same tap
+    startShowSequence();
+  });
+});
+
+// Tap anywhere outside a card cancels/reverts it
+document.addEventListener('touchstart', () => {
+  document.querySelectorAll('.projects__card.show-info').forEach((card) => {
     card.classList.remove('show-info');
   });
 });
