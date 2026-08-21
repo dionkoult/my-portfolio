@@ -401,3 +401,29 @@ document.querySelector('.top__button').addEventListener('click', function () {
     behavior: 'smooth'
   });
 });
+
+/* ============ Info toggle ============ */
+document.querySelectorAll('.projects__card').forEach((card) => {
+  let showTimeout, revertTimeout;
+
+  card.addEventListener('mouseenter', () => {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+
+    // show info after 0.5s hover
+    showTimeout = setTimeout(() => {
+      card.classList.add('show-info');
+
+      // revert back to original after 5s of being shown
+      revertTimeout = setTimeout(() => {
+        card.classList.remove('show-info');
+      }, 6500);
+    }, 500);
+  });
+
+  card.addEventListener('mouseleave', () => {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+    card.classList.remove('show-info');
+  });
+});
