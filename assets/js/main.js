@@ -47,6 +47,37 @@ window.addEventListener('load', () => {
   });
 
 /*=============== SWIPER PROJECTS ===============*/
+const cardHandlers = new Map();
+
+document.querySelectorAll('.projects__card').forEach((card) => {
+  let showTimeout, revertTimeout;
+
+  function startShowSequence() {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+
+    showTimeout = setTimeout(() => {
+      card.classList.add('show-info');
+
+      revertTimeout = setTimeout(() => {
+        card.classList.remove('show-info');
+      }, 6500);
+    }, 500);
+  }
+
+  function cancelAndRevert() {
+    clearTimeout(showTimeout);
+    clearTimeout(revertTimeout);
+    card.classList.remove('show-info');
+  }
+
+  // Desktop (mouse)
+  card.addEventListener('mouseenter', startShowSequence);
+  card.addEventListener('mouseleave', cancelAndRevert);
+
+  cardHandlers.set(card, { startShowSequence, cancelAndRevert });
+});
+
 const swiperProjects = new Swiper('.projects__swiper', {
   loop: true,
   spaceBetween: 24,
@@ -66,12 +97,25 @@ const swiperProjects = new Swiper('.projects__swiper', {
   },
 
   on: {
-    tap: function () {
+    tap: function (event) {
+      // toggle autoplay
       if (this.autoplay.running) {
         this.autoplay.stop();
       } else {
         this.autoplay.start();
       }
+
+      // handle card info reveal (mobile tap)
+      const tappedCard = event.target.closest('.projects__card');
+
+      document.querySelectorAll('.projects__card').forEach((card) => {
+        const handlers = cardHandlers.get(card);
+        if (card === tappedCard) {
+          handlers.startShowSequence();
+        } else {
+          handlers.cancelAndRevert();
+        }
+      });
     }
   }
 });
@@ -409,46 +453,5 @@ document.querySelector('.top__button').addEventListener('click', function () {
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
-  });
-});
-
-/* ============ Info toggle ============ */
-document.querySelectorAll('.projects__card').forEach((card) => {
-  let showTimeout, revertTimeout;
-
-  function startShowSequence() {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
-
-    showTimeout = setTimeout(() => {
-      card.classList.add('show-info');
-
-      revertTimeout = setTimeout(() => {
-        card.classList.remove('show-info');
-      }, 6500);
-    }, 500);
-  }
-
-  function cancelAndRevert() {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
-    card.classList.remove('show-info');
-  }
-
-  // Desktop (mouse)
-  card.addEventListener('mouseenter', startShowSequence);
-  card.addEventListener('mouseleave', cancelAndRevert);
-
-  // Mobile (touch) — tap to trigger, tap elsewhere to cancel
-  card.addEventListener('touchstart', (e) => {
-    e.stopPropagation(); // prevent the document listener below from firing on this same tap
-    startShowSequence();
-  });
-});
-
-// Tap anywhere outside a card cancels/reverts it
-document.addEventListener('touchstart', () => {
-  document.querySelectorAll('.projects__card.show-info').forEach((card) => {
-    card.classList.remove('show-info');
   });
 });
