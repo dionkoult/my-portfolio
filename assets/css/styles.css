@@ -607,12 +607,6 @@ img {
   margin-bottom: 1rem;
 }
 
-.projects__subtitle {
-  font-family: var(--second-font);
-  font-size: var(--small-font-size);
-  margin-bottom: .5rem;
-}
-
 .projects__description {
   font-size: var(--small-font-size);
 }
@@ -663,58 +657,66 @@ img {
   transition: opacity .4s;
 }
 
-.projects__tech-wrap {
-  display: grid;
-  grid-template-rows: auto auto;
+.project__details__button {
+  background-color: var(--container-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  padding: 4px 10px;
+  border-radius: 4rem;
+  font-size: var(--smaller-font-size);
+  font-family: var(--second-font);
+  transition: color 0.4s, border-color 0.4s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
-.projects__subtitle {
-  position: relative;
-  grid-row: 1;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+/*=============== PROJECT TECH/INFO TOGGLE ===============*/
+.projects__details {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  height: 100px;
 }
 
-.projects__description:not(.info) {
-  grid-row: 2;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+.projects__details > div:first-child {
+  display: flex;
+  gap: .5rem;
 }
 
-/* info sits absolutely on top of subtitle's spot, out of grid flow */
-.projects__description.info {
-  position: absolute;
-  top: 4.75rem;
-  left: 0;
-  width: 100%;
-  grid-row: 1;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+.techs__button.active,
+.info__button.active {
+  color: var(--first-color);
+  border-color: var(--first-color);
 }
 
-/* visible by default */
-.projects__subtitle,
-.projects__description:not(.info) {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* on hover of the whole card: subtitle -> info swap, description fades out */
-.projects__card.show-info .projects__subtitle,
-.projects__card.show-info .projects__description:not(.info) {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s;
-}
-
-.projects__card.show-info .projects__description.info {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s;
-}
-
-.projects__subtitle,
 .projects__description {
-  will-change: opacity;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.projects__description.active {
+  display: block;
+  opacity: 1;
+}
+
+/* new: fading-out state, still displayed but transitioning to opacity 0 */
+.projects__description.fade-out {
+  display: block;
+  opacity: 0;
+}
+
+/* controls display only */
+.projects__description.show {
+  display: block;
+}
+
+/* controls opacity only, requires .show to actually be visible */
+.projects__description.show.active {
+  opacity: 1;
+}
+
+.project__details__button:not(.active):hover {
+  box-shadow: 0 4px 8px color-mix(in srgb, var(--text-color) 25%, transparent);
 }
 
 /*=============== WORK ===============*/

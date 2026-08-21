@@ -402,28 +402,50 @@ document.querySelector('.top__button').addEventListener('click', function () {
   });
 });
 
-/* ============ Info toggle ============ */
+/*=============== PROJECT TECH/INFO TOGGLE ===============*/
 document.querySelectorAll('.projects__card').forEach((card) => {
-  let showTimeout, revertTimeout;
+  const techsBtn = card.querySelector('.techs__button');
+  const infoBtn = card.querySelector('.info__button');
+  const techsText = card.querySelector('.techs__used');
+  const infoText = card.querySelector('.projects__description.info');
 
-  card.addEventListener('mouseenter', () => {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
+  // Set initial state
+  techsText.classList.add('show', 'active');
+  infoText.classList.remove('show', 'active');
 
-    // show info after 0.1s hover
-    showTimeout = setTimeout(() => {
-      card.classList.add('show-info');
+  techsBtn.classList.add('active');
+  infoBtn.classList.remove('active');
 
-      // revert back to original after 5s of being shown
-      revertTimeout = setTimeout(() => {
-        card.classList.remove('show-info');
-      }, 6500);
-    }, 500);
+  function switchTo(showEl, showBtn, hideEl, hideBtn) {
+    if (showEl.classList.contains('active')) return;
+
+    // Button state
+    hideBtn.classList.remove('active');
+    showBtn.classList.add('active');
+
+    // Fade current element out
+    hideEl.classList.remove('active');
+
+    setTimeout(() => {
+      // Hide old element
+      hideEl.classList.remove('show');
+
+      // Prepare new element
+      showEl.classList.add('show');
+
+      // Force browser to register opacity: 0
+      void showEl.offsetWidth;
+
+      // Fade new element in
+      showEl.classList.add('active');
+    }, 200);
+  }
+
+  techsBtn.addEventListener('click', () => {
+    switchTo(techsText, techsBtn, infoText, infoBtn);
   });
 
-  card.addEventListener('mouseleave', () => {
-    clearTimeout(showTimeout);
-    clearTimeout(revertTimeout);
-    card.classList.remove('show-info');
+  infoBtn.addEventListener('click', () => {
+    switchTo(infoText, infoBtn, techsText, techsBtn);
   });
 });
