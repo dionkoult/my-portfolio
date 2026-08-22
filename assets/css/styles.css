@@ -644,6 +644,10 @@ img {
   padding-bottom: 2rem;
 }
 
+.projects__button:hover {
+  box-shadow: 0 0 24px var(--first-color);
+}
+
 .projects .swiper-pagination-bullets {
   bottom: 0;
 }
@@ -651,18 +655,6 @@ img {
 .projects .swiper-pagination-bullet {
   background-color: var(--first-color);
   transition: opacity .4s;
-}
-
-.project__details__button {
-  background-color: var(--container-color);
-  color: var(--text-color);
-  border: 1px solid var(--text-color);
-  padding: 4px 10px;
-  border-radius: 4rem;
-  font-size: var(--smaller-font-size);
-  font-family: var(--second-font);
-  transition: color 0.4s, border-color 0.4s, box-shadow 0.2s;
-  cursor: pointer;
 }
 
 /*=============== PROJECT TECH/INFO TOGGLE ===============*/
@@ -693,10 +685,6 @@ img {
   font-family: var(--second-font);
   transition: color 0.4s, border-color 0.4s, box-shadow 0.2s;
   cursor: pointer;
-}
-
-.project__details__button:not(.active):hover {
-  box-shadow: 0 4px 8px color-mix(in srgb, var(--text-color) 25%, transparent);
 }
 
 .techs__button.active,
@@ -1561,8 +1549,8 @@ img {
     right: 1.5rem;
   }
 
-  .projects__button:hover {
-    box-shadow: 0 0 24px var(--first-color);
+  .project__details__button:not(.active):hover {
+    box-shadow: 0 4px 8px color-mix(in srgb, var(--text-color) 25%, transparent);
   }
 
   .work__container {
