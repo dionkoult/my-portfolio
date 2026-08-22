@@ -633,10 +633,6 @@ img {
   transition: box-shadow .4s, opacity .4s;
 }
 
-.projects__button:hover {
-  box-shadow: 0 0 24px var(--first-color);
-}
-
 .projects__image:hover .projects__button {
   opacity: 1;
   pointer-events: initial;
@@ -1563,6 +1559,10 @@ img {
   .projects__button {
     top: 1.5rem;
     right: 1.5rem;
+  }
+
+  .projects__button:hover {
+    box-shadow: 0 0 24px var(--first-color);
   }
 
   .work__container {
