@@ -98,8 +98,13 @@ tabs.forEach((tab) => {
 
 /*=============== TITLE TABS ===============*/
 function switchTitle(showId, hideId) {
-  document.getElementById(hideId).classList.remove('title__active');
-  document.getElementById(showId).classList.add('title__active');
+  const show = document.getElementById(showId);
+  const hide = document.getElementById(hideId);
+
+  hide.classList.remove('title__active');
+  hide.offsetWidth; // force reflow so mobile registers the fade-out before the fade-in starts
+
+  show.classList.add('title__active');
 }
 
 function educationButton() {
