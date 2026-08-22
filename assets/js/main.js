@@ -84,72 +84,31 @@ tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     if (tab.classList.contains('work-active')) return;
 
-    const targetSelector = tab.dataset.target;
-    const targetContent = document.querySelector(targetSelector);
-
+    const targetContent = document.querySelector(tab.dataset.target);
     const activeContent = document.querySelector('[data-content].work-active');
 
-    if (activeContent) {
-      // Start fade out
-      activeContent.classList.add('fade-out');
+    if (activeContent) activeContent.classList.remove('work-active');
+    tabs.forEach((t) => t.classList.remove('work-active'));
 
-      // Wait for fade out duration
-      setTimeout(() => {
-        // Hide all contents and remove fade-out
-        tabContents.forEach((content) => {
-          content.classList.remove('work-active', 'fade-out');
-        });
-
-        // Remove active class from all tabs
-        tabs.forEach((t) => t.classList.remove('work-active'));
-
-        // Activate clicked tab
-        tab.classList.add('work-active');
-
-        // Start fade-in for new content
-        targetContent.classList.add('work-active');
-        targetContent.classList.add('fade-out');
-        targetContent.offsetWidth;
-        targetContent.classList.remove('fade-out');
-      }, 200); 
-    } else {
-      // If no active content, just show immediately
-      tab.classList.add('work-active');
-      targetContent.classList.add('work-active');
-    }
+    tab.classList.add('work-active');
+    targetContent.classList.add('work-active');
   });
 });
 
 
 /*=============== TITLE TABS ===============*/
 function switchTitle(showId, hideId) {
-  const show = document.getElementById(showId);
-  const hide = document.getElementById(hideId);
-
-  // Fade out current
-  hide.classList.add("title__fade-out");
-
-  setTimeout(() => {
-    // Fully hide old
-    hide.classList.remove("title__fade-out");
-    hide.classList.add("title__inactive");
-
-    // Prepare new title for fade-in
-    show.classList.remove("title__inactive");
-    show.classList.add("title__fade-out"); 
-    show.offsetWidth; 
-    show.classList.remove("title__fade-out"); 
-  }, 200); 
+  document.getElementById(hideId).classList.remove('title__active');
+  document.getElementById(showId).classList.add('title__active');
 }
 
 function educationButton() {
-  switchTitle("education2", "work2");
+  switchTitle('education2', 'work2');
 }
 
 function experienceButton() {
-  switchTitle("work2", "education2");
+  switchTitle('work2', 'education2');
 }
-
 
 /*=============== SERVICES ACCORDION ===============*/
 const servicesButtons = document.querySelectorAll('.services__button');

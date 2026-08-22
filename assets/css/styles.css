@@ -739,11 +739,21 @@ img {
 .work__area {
   position: relative;
   padding-left: 1rem;
+  display: grid;
 }
 
 .work__content {
+  grid-area: 1 / 1;
   display: grid;
   row-gap: 4rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.work__content.work-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .work__card {
@@ -794,42 +804,26 @@ img {
   left: -6px;
 }
 
-/* Show & hide sections */
-.work__area [data-content] {
-  display: none;
-}
-
-.work-active[data-content] {
-  display: grid;
-}
-
 /* Active tab */
 .work__button.work-active {
   color: var(--first-color);
 }
 
-/* Tabs / Title smooth animation */
-.title__content {
-  opacity: 1;
-  transition: opacity 0.2s ease;
+.title__wrapper {
   position: relative;
+  display: grid;
 }
 
-.title__fade-out {
+.title__content {
+  grid-area: 1 / 1;
   opacity: 0;
-}
-
-.title__inactive {
-  display: none;
-}
-
-[data-content] {
-  opacity: 1;
+  pointer-events: none;
   transition: opacity 0.2s ease;
 }
 
-[data-content].fade-out {
-  opacity: 0;
+.title__content.title__active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /*=============== SERVICES ===============*/
