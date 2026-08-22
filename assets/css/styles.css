@@ -683,7 +683,7 @@ img {
   border-radius: 4rem;
   font-size: var(--smaller-font-size);
   font-family: var(--second-font);
-  transition: color 0.4s, border-color 0.4s, box-shadow 0.2s;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
   cursor: pointer;
 }
 
