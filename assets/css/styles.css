@@ -732,10 +732,6 @@ img {
   font-size: 1rem;
 }
 
-.work__button:hover {
-  color: var(--first-color);
-}
-
 .work__area {
   position: relative;
   padding-left: 1rem;
@@ -1574,6 +1570,10 @@ img {
   .work__subtitle, .work__description {
     font-size: var(--h3-font-size);
     margin-top: 5px;
+  }
+
+  .work__button:hover:not(.work-active) {
+    color: var(--title-color);
   }
 
   .services__container {
