@@ -725,7 +725,7 @@ img {
   column-gap: .25rem;
   font-size: var(--small-font-size);
   font-family: var(--second-font);
-  transition: color .4s;
+  transition: color .2s;
 }
 
 .work__button i{
