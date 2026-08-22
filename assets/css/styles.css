@@ -1068,7 +1068,7 @@ img {
   border-radius: 5px;
   transition: opacity 0.25s, transform .4s;
   transform: translateX(50px);
-  width: 80px;
+  width: 85px;
 }
 
 /*=============== CONTACT ===============*/
@@ -1654,7 +1654,7 @@ img {
   }
 
   .top__button:hover {
-    width: 112px;
+    width: 116px;
     justify-content: space-between;
   }
 
