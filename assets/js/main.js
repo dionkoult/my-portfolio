@@ -108,10 +108,10 @@ tabs.forEach((tab) => {
 
         // Start fade-in for new content
         targetContent.classList.add('work-active');
-        targetContent.classList.add('fade-out'); // start from 0 opacity
-        targetContent.offsetWidth; // force reflow
-        targetContent.classList.remove('fade-out'); // triggers fade-in
-      }, 300); // match CSS transition
+        targetContent.classList.add('fade-out');
+        targetContent.offsetWidth;
+        targetContent.classList.remove('fade-out');
+      }, 200); 
     } else {
       // If no active content, just show immediately
       tab.classList.add('work-active');
@@ -136,10 +136,10 @@ function switchTitle(showId, hideId) {
 
     // Prepare new title for fade-in
     show.classList.remove("title__inactive");
-    show.classList.add("title__fade-out"); // start invisible
-    show.offsetWidth; // force reflow
-    show.classList.remove("title__fade-out"); // triggers fade-in
-  }, 300); // match CSS transition
+    show.classList.add("title__fade-out"); 
+    show.offsetWidth; 
+    show.classList.remove("title__fade-out"); 
+  }, 200); 
 }
 
 function educationButton() {

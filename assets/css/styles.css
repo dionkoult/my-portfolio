@@ -811,7 +811,7 @@ img {
 /* Tabs / Title smooth animation */
 .title__content {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
   position: relative;
 }
 
@@ -825,7 +825,7 @@ img {
 
 [data-content] {
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 [data-content].fade-out {
